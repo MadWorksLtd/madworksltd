@@ -1,44 +1,51 @@
-
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #2a2c39; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ef6603; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #0a0b10;
+  /* Deep Midnight Charcoal */
+  --default-color: #b0b3b8;
+  /* Muted Silver for soft legibility */
+  --heading-color: #ffffff;
+  /* Pure White for authority */
+  --accent-color: #f39c12;
+  /* Honey Gold / Sophisticated Orange */
+  --surface-color: rgba(255, 255, 255, 0.05);
+  /* Glass surface */
+  --contrast-color: #ffffff;
+  --shine-color: rgba(255, 255, 255, 0.1);
+  /* Subtle Silver Shine */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ef6603; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #060606; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ef6603; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #e0e0e0;
+  --nav-hover-color: var(--accent-color);
+  --nav-mobile-background-color: #0a0b10;
+  --nav-dropdown-background-color: rgba(10, 11, 16, 0.95);
+  --nav-dropdown-color: #e0e0e0;
+  --nav-dropdown-hover-color: var(--accent-color);
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f9f9f9;
-  --surface-color: #ffffff;
+  --background-color: #0f111a;
+  --surface-color: rgba(255, 255, 255, 0.03);
 }
 
 .dark-background {
-  --background-color: #2a2c39;
+  --background-color: #0a0b10;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #404356;
+  --surface-color: rgba(255, 255, 255, 0.05);
   --contrast-color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Smooth scroll */
@@ -53,6 +60,31 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  background-image: radial-gradient(circle at 50% 0%, rgba(243, 156, 18, 0.05) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+/* Global Image Blending */
+img {
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.4s ease-in-out;
+}
+
+img:hover {
+  filter: brightness(1) contrast(1);
+}
+
+/* Glass Card Image Masking */
+.services .service-item img,
+.portfolio .portfolio-item img {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  border-radius: 8px;
+}
+
+/* Logo Specific */
+.logo img {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 a {
@@ -62,7 +94,7 @@ a {
 }
 
 a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -216,6 +248,8 @@ h6 {
   .navmenu .active,
   .navmenu .active:focus {
     background-color: var(--nav-hover-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #000000;
   }
 
   .navmenu .dropdown ul {
@@ -610,7 +644,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 80px 0;
   scroll-margin-top: 77px;
   overflow: clip;
 }
@@ -660,7 +694,7 @@ section,
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(0deg, var(--background-color) 0%, color-mix(in srgb, var(--background-color) 90%, white 10%) 100%);
+  background: radial-gradient(circle at 50% 50%, #1a1b26 0%, #0a0b10 100%);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -715,18 +749,42 @@ section,
   letter-spacing: 1px;
   display: inline-block;
   padding: 12px 32px;
-  border-radius: 50px;
+  border-radius: 4px;
   transition: 0.5s;
   line-height: 1;
   margin: 10px;
   animation-delay: 0.8s;
-  color: var(--default-color);
-  border: 2px solid var(--accent-color);
+  color: #ffffff;
+  border: 1px solid var(--accent-color);
+  background: transparent;
+}
+
+/* High Impact Image Blending */
+.features img {
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  transition: transform 0.5s ease;
+}
+
+.features img:hover {
+  transform: scale(1.02);
+}
+
+.team .team-member .member-img img {
+  filter: grayscale(20%) brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.team .team-member:hover .member-img img {
+  filter: grayscale(0%) brightness(1);
 }
 
 .hero .btn-get-started:hover {
   background: var(--accent-color);
-  color: var(--contrast-color);
+  color: #000000;
+  box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2);
   text-decoration: none;
 }
 
@@ -826,6 +884,7 @@ section,
   font-size: 20px;
   padding-right: 4px;
   color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
 .about .read-more {
@@ -891,14 +950,16 @@ section,
 }
 
 .features .nav-link:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .features .nav-link.active {
   background: var(--accent-color);
-  color: var(--contrast-color);
+  color: #000000;
   border-color: var(--accent-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .features .nav-link.active h4 {
@@ -999,13 +1060,20 @@ section,
 --------------------------------------------------------------*/
 .services .service-item {
   background-color: var(--surface-color);
-  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 60px 30px 60px 70px;
   transition: all ease-in-out 0.3s;
-  border-radius: 18px;
+  border-radius: 8px;
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.services .service-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
 }
 
 .services .service-item .icon {
@@ -1091,6 +1159,16 @@ section,
 .portfolio .portfolio-item {
   position: relative;
   overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #000;
+}
+
+.portfolio .portfolio-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transform: scale(1.02);
 }
 
 .portfolio .portfolio-item .portfolio-info {
@@ -1149,18 +1227,35 @@ section,
 --------------------------------------------------------------*/
 .testimonials .testimonial-item {
   background-color: var(--surface-color);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
   box-sizing: content-box;
   padding: 30px;
   margin: 30px 15px;
   position: relative;
   height: 100%;
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 12px;
+}
+
+.testimonials .testimonial-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
 }
 
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
-  border-radius: 50px;
+  border-radius: 50%;
   margin-right: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  filter: grayscale(30%) brightness(0.9);
+}
+
+.testimonials .testimonial-item:hover .testimonial-img {
+  filter: grayscale(0%) brightness(1);
+  border-color: var(--accent-color);
 }
 
 .testimonials .testimonial-item h3 {
